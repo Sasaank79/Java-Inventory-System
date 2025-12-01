@@ -1,41 +1,34 @@
-# Java Inventory Management System
+# Java Inventory System 📦
 
-A simple, console-based Inventory Management System built with Java. This project demonstrates Object-Oriented Programming (OOP) principles, file handling with JSON, and unit testing.
+Hi there! Welcome to my **Java Inventory Management System**.
 
-## Features
+I built this project to demonstrate a clean, efficient way to manage products using **Core Java**. It's a console-based application that lets you track items, update stock, and manage prices—all while saving everything automatically so you never lose your data.
 
-- **Console-based Menu**: Easy-to-use interface for managing inventory.
-- **CRUD Operations**: Add, Update, Delete, Search, and List items.
-- **Data Persistence**: Inventory data is saved to `inventory.json` using the Gson library.
-- **Input Validation**: Robust error handling for invalid inputs.
-- **Unit Testing**: JUnit 5 tests for core logic.
+It's designed to be simple but robust, using industry-standard tools like **Maven** for build management and **Gson** for handling data.
 
-## Project Structure
+## 🚀 Key Features
 
-```
-src/
-  main/
-    java/
-      com/inventory/
-        model/          # Data models (Item)
-        service/        # Business logic (InventoryManager)
-        Main.java       # Entry point
-  test/
-    java/
-      com/inventory/    # Unit tests
-```
+*   **Persistent Storage**: Your data is saved to a `inventory.json` file. Close the app, open it back up, and your items are still there.
+*   **CRUD Operations**: You can **C**reate, **R**ead, **U**pdate, and **D**elete items easily.
+*   **Search**: Quickly find items by name (e.g., searching "Apple" finds "Apple Watch" and "Apple Juice").
+*   **Input Validation**: The app won't crash if you accidentally type "abc" when it asks for a price. It handles errors gracefully.
+*   **Clean Code**: Written with Object-Oriented principles (OOP) in mind.
 
-## Prerequisites
+## 🛠️ Tech Stack
 
-- Java Development Kit (JDK) 17 or higher
-- Maven 3.6 or higher
+*   **Language**: Java (JDK 17+)
+*   **Build Tool**: Maven
+*   **Data Format**: JSON (via Google Gson library)
+*   **Testing**: JUnit 5
 
-## How to Run
+## 🏃‍♂️ How to Run It
 
-1.  **Clone the repository**:
+You'll need **Java** and **Maven** installed on your machine.
+
+1.  **Clone this repo**:
     ```bash
-    git clone <repository-url>
-    cd inventory-system
+    git clone https://github.com/Sasaank79/Java-Inventory-System.git
+    cd Java-Inventory-System
     ```
 
 2.  **Build the project**:
@@ -43,23 +36,32 @@ src/
     mvn clean install
     ```
 
-3.  **Run the application**:
+3.  **Start the App**:
     ```bash
     mvn exec:java
     ```
 
-## How to Test
+4.  **Run Tests** (Optional):
+    ```bash
+    mvn test
+    ```
 
-Run the unit tests using Maven:
-```bash
-mvn test
-```
+## 📝 How It Works
 
-## Dependencies
+When you start the application, it looks for a file called `inventory.json`.
+*   **If found**: It loads all your existing items into memory.
+*   **If not found**: It starts with an empty list.
 
-- **Gson**: Google's library for JSON serialization/deserialization.
-- **JUnit 5**: Testing framework.
+Every time you **Add**, **Update**, or **Delete** an item, the system automatically rewrites the `inventory.json` file. This ensures your data is always safe, even if the program stops unexpectedly.
 
-## License
+## 📂 Project Structure
 
-This project is open-source and available under the MIT License.
+*   `src/main/java`: The actual source code.
+    *   `model/Item.java`: Defines what an "Item" is (ID, Name, Price, Qty).
+    *   `service/InventoryManager.java`: The brain of the operation. Handles logic and file saving.
+    *   `Main.java`: The menu you interact with.
+*   `src/test/java`: Unit tests to make sure everything works correctly.
+*   `inventory.json`: The database file (generated automatically).
+
+---
+*Built by [Surya Sasaank Y.]*

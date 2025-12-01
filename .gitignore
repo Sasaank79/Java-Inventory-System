@@ -1,0 +1,10 @@
+# Maven
+target/
+*.log
+
+# IDEA
+.idea/
+*.iml
+
+# OS
+.DS_Store

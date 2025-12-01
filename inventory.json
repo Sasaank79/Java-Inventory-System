@@ -12,12 +12,6 @@
     "price": 499.99
   },
   {
-    "id": "3",
-    "name": "Wireless Mouse",
-    "quantity": 50,
-    "price": 19.99
-  },
-  {
     "id": "4",
     "name": "Mechanical Keyboard",
     "quantity": 30,
@@ -135,7 +129,7 @@
     "id": "23",
     "name": "Water Bottle 1L",
     "quantity": 70,
-    "price": 12.50
+    "price": 12.5
   },
   {
     "id": "24",
@@ -207,13 +201,13 @@
     "id": "35",
     "name": "Digital Wristwatch",
     "quantity": 40,
-    "price": 35.00
+    "price": 35.0
   },
   {
     "id": "36",
     "name": "Shampoo 500ml",
     "quantity": 60,
-    "price": 8.50
+    "price": 8.5
   },
   {
     "id": "37",
@@ -298,5 +292,11 @@
     "name": "Desk Organizer",
     "quantity": 25,
     "price": 19.99
+  },
+  {
+    "id": "3",
+    "name": "Wireless Mouse",
+    "quantity": 39,
+    "price": 15.99
   }
 ]

@@ -1,67 +1,79 @@
 # Java Inventory System 📦
 
-Hi there! Welcome to my **Java Inventory Management System**.
+A **Spring Boot** REST API for managing inventory items, built with **JPA** and **H2 Database**.
 
-I built this project to demonstrate a clean, efficient way to manage products using **Core Java**. It's a console-based application that lets you track items, update stock, and manage prices—all while saving everything automatically so you never lose your data.
+## 🚀 Features
 
-It's designed to be simple but robust, using industry-standard tools like **Maven** for build management and **Gson** for handling data.
-
-## 🚀 Key Features
-
-*   **Persistent Storage**: Your data is saved to a `inventory.json` file. Close the app, open it back up, and your items are still there.
-*   **CRUD Operations**: You can **C**reate, **R**ead, **U**pdate, and **D**elete items easily.
-*   **Search**: Quickly find items by name (e.g., searching "Apple" finds "Apple Watch" and "Apple Juice").
-*   **Input Validation**: The app won't crash if you accidentally type "abc" when it asks for a price. It handles errors gracefully.
-*   **Clean Code**: Written with Object-Oriented principles (OOP) in mind.
+- RESTful API with full CRUD operations
+- H2 in-memory database (auto-creates tables)
+- Spring Data JPA for database access
+- Clean layered architecture (Controller → Repository → Entity)
 
 ## 🛠️ Tech Stack
 
-*   **Language**: Java (JDK 17+)
-*   **Build Tool**: Maven
-*   **Data Format**: JSON (via Google Gson library)
-*   **Testing**: JUnit 5
+- **Java 17+**
+- **Spring Boot 3.2**
+- **Spring Data JPA**
+- **H2 Database**
+- **Maven**
 
-## 🏃‍♂️ How to Run It
+## 🏃‍♂️ How to Run
 
-You'll need **Java** and **Maven** installed on your machine.
+```bash
+# Clone the repo
+git clone https://github.com/Sasaank79/Java-Inventory-System.git
+cd Java-Inventory-System
 
-1.  **Clone this repo**:
-    ```bash
-    git clone https://github.com/Sasaank79/Java-Inventory-System.git
-    cd Java-Inventory-System
-    ```
+# Run the application
+mvn spring-boot:run
+```
 
-2.  **Build the project**:
-    ```bash
-    mvn clean install
-    ```
+The API will be available at `http://localhost:8080`
 
-3.  **Start the App**:
-    ```bash
-    mvn exec:java
-    ```
+## 📡 API Endpoints
 
-4.  **Run Tests** (Optional):
-    ```bash
-    mvn test
-    ```
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/items` | List all items |
+| GET | `/api/items/{id}` | Get item by ID |
+| POST | `/api/items` | Create new item |
+| PUT | `/api/items/{id}` | Update item |
+| DELETE | `/api/items/{id}` | Delete item |
+| GET | `/api/items/search?name=keyword` | Search by name |
 
-## 📝 How It Works
+## 📝 Example Usage
 
-When you start the application, it looks for a file called `inventory.json`.
-*   **If found**: It loads all your existing items into memory.
-*   **If not found**: It starts with an empty list.
+**Add an item:**
+```bash
+curl -X POST http://localhost:8080/api/items \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Laptop", "quantity": 10, "price": 999.99}'
+```
 
-Every time you **Add**, **Update**, or **Delete** an item, the system automatically rewrites the `inventory.json` file. This ensures your data is always safe, even if the program stops unexpectedly.
+**List all items:**
+```bash
+curl http://localhost:8080/api/items
+```
 
 ## 📂 Project Structure
 
-*   `src/main/java`: The actual source code.
-    *   `model/Item.java`: Defines what an "Item" is (ID, Name, Price, Qty).
-    *   `service/InventoryManager.java`: The brain of the operation. Handles logic and file saving.
-    *   `Main.java`: The menu you interact with.
-*   `src/test/java`: Unit tests to make sure everything works correctly.
-*   `inventory.json`: The database file (generated automatically).
+```
+src/main/java/com/inventory/
+├── InventoryApplication.java   # Entry point
+├── controller/
+│   └── ItemController.java     # REST endpoints
+├── model/
+│   └── Item.java               # JPA Entity
+└── repository/
+    └── ItemRepository.java     # Data access layer
+```
+
+## 🗄️ H2 Console
+
+Access the database console at: `http://localhost:8080/h2-console`
+- JDBC URL: `jdbc:h2:mem:inventory`
+- Username: `sa`
+- Password: *(leave blank)*
 
 ---
-*Built by [Surya Sasaank Y.]*
+*Built by Surya Sasaank Y.*

@@ -1,9 +1,17 @@
 package com.inventory.model;
 
-import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Item {
-    private String id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
     private int quantity;
     private double price;
@@ -11,18 +19,17 @@ public class Item {
     public Item() {
     }
 
-    public Item(String id, String name, int quantity, double price) {
-        this.id = id;
+    public Item(String name, int quantity, double price) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,23 +55,5 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("ID: %-5s | Name: %-20s | Qty: %-5d | Price: $%.2f", id, name, quantity, price);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Item item = (Item) o;
-        return Objects.equals(id, item.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }

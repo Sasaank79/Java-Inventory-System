@@ -1,34 +1,41 @@
 # Java Inventory System 📦
 
-A **Spring Boot** REST API for managing inventory items, built with **JPA** and **H2 Database**.
+A **Spring Boot** REST API for inventory management with **Swagger**, **validation**, and **Docker** support.
 
 ## 🚀 Features
 
 - RESTful API with full CRUD operations
-- H2 in-memory database (auto-creates tables)
-- Spring Data JPA for database access
-- Clean layered architecture (Controller → Repository → Entity)
+- **Swagger UI** for live API documentation
+- **Input Validation** with clean error responses
+- **Docker ready** (PostgreSQL) for production
+- **H2** in-memory database for local development
 
 ## 🛠️ Tech Stack
 
 - **Java 17+**
 - **Spring Boot 3.2**
 - **Spring Data JPA**
-- **H2 Database**
-- **Maven**
+- **H2** (local) / **PostgreSQL** (Docker)
+- **Docker & Docker Compose**
+- **Swagger / OpenAPI**
 
 ## 🏃‍♂️ How to Run
 
+### Local Development (H2)
 ```bash
-# Clone the repo
-git clone https://github.com/Sasaank79/Java-Inventory-System.git
-cd Java-Inventory-System
-
-# Run the application
 mvn spring-boot:run
 ```
 
-The API will be available at `http://localhost:8080`
+### With Docker (PostgreSQL)
+```bash
+docker-compose up --build
+```
+
+API available at: `http://localhost:8080`
+
+## 📖 API Documentation
+
+Swagger UI: `http://localhost:8080/swagger-ui.html`
 
 ## 📡 API Endpoints
 
@@ -41,39 +48,30 @@ The API will be available at `http://localhost:8080`
 | DELETE | `/api/items/{id}` | Delete item |
 | GET | `/api/items/search?name=keyword` | Search by name |
 
-## 📝 Example Usage
+## 📝 Example
 
-**Add an item:**
 ```bash
+# Add item
 curl -X POST http://localhost:8080/api/items \
   -H "Content-Type: application/json" \
   -d '{"name": "Laptop", "quantity": 10, "price": 999.99}'
-```
 
-**List all items:**
-```bash
-curl http://localhost:8080/api/items
+# Validation error
+curl -X POST http://localhost:8080/api/items \
+  -H "Content-Type: application/json" \
+  -d '{"name": "", "quantity": -5, "price": 0}'
 ```
 
 ## 📂 Project Structure
 
 ```
 src/main/java/com/inventory/
-├── InventoryApplication.java   # Entry point
-├── controller/
-│   └── ItemController.java     # REST endpoints
-├── model/
-│   └── Item.java               # JPA Entity
-└── repository/
-    └── ItemRepository.java     # Data access layer
+├── InventoryApplication.java
+├── controller/ItemController.java
+├── model/Item.java
+├── repository/ItemRepository.java
+└── exception/GlobalExceptionHandler.java
 ```
-
-## 🗄️ H2 Console
-
-Access the database console at: `http://localhost:8080/h2-console`
-- JDBC URL: `jdbc:h2:mem:inventory`
-- Username: `sa`
-- Password: *(leave blank)*
 
 ---
 *Built by Surya Sasaank Y.*

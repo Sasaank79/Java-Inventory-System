@@ -1,5 +1,7 @@
 # Java Inventory System 📦
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Sasaank79/Java-Inventory-System)
+
 A **Spring Boot** REST API for inventory management with **Swagger**, **validation**, and **Docker** support.
 
 ## 🚀 Features
